@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let navController = UINavigationController(
-            rootViewController: TasksViewController()
+            rootViewController: TasksTableViewController()
         )
         
         window = UIWindow(windowScene: windowScene)
