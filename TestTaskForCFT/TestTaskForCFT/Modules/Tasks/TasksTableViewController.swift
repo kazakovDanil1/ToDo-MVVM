@@ -11,12 +11,17 @@ class TasksTableViewController: UIViewController {
 
     private let taskViewModel = TasksViewModel()
     private let tasksTableView = TasksTableView()
+    private let button = CircleButton(action: #selector(createNewTask))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tasksTableView)
+        addSubviews()
         setupNavigationController()
         setupTableViewControllerDelegates()
+    }
+    
+    @objc func createNewTask() {
+        taskViewModel.createNewTask()
     }
     
     func setupNavigationController() {
@@ -24,15 +29,30 @@ class TasksTableViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    func addSubviews() {
+        view.addSubview(tasksTableView)
+        tasksTableView.addSubview(button)
+    }
     
     func setupTableViewControllerDelegates() {
         tasksTableView.delegate = self
         tasksTableView.dataSource = self
     }
+    
+    override func viewWillLayoutSubviews() {
+        button.layer.cornerRadius = button.frame.height / 2
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tasksTableView.frame = view.bounds
+        
+        NSLayoutConstraint.activate([
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            button.heightAnchor.constraint(equalToConstant: 100),
+            button.widthAnchor.constraint(equalToConstant: 100)
+        ])
     }
 }
 

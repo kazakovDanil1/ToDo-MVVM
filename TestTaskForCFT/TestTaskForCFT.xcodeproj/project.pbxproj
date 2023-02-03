@@ -18,6 +18,7 @@
 		9709F828298A6D9C008A3AF9 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F827298A6D9C008A3AF9 /* TaskDetailsView.swift */; };
 		9709F82B298A6DDE008A3AF9 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F82A298A6DDE008A3AF9 /* TasksViewModel.swift */; };
 		9709F82D298A6DF6008A3AF9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F82C298A6DF6008A3AF9 /* Task.swift */; };
+		97E4B6B6298D44590036C85F /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E4B6B5298D44590036C85F /* CircleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		9709F827298A6D9C008A3AF9 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		9709F82A298A6DDE008A3AF9 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		9709F82C298A6DF6008A3AF9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		97E4B6B5298D44590036C85F /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				9709F821298A6D16008A3AF9 /* Tasks */,
 				9709F824298A6D40008A3AF9 /* TaskDetails */,
+				97E4B6B7298D445C0036C85F /* CustomUI */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -109,6 +112,14 @@
 				9709F82C298A6DF6008A3AF9 /* Task.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		97E4B6B7298D445C0036C85F /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				97E4B6B5298D44590036C85F /* CircleButton.swift */,
+			);
+			path = CustomUI;
 			sourceTree = "<group>";
 		};
 		97E53336298AA600005F8D88 /* Application */ = {
@@ -205,6 +216,7 @@
 				9709F828298A6D9C008A3AF9 /* TaskDetailsView.swift in Sources */,
 				9709F80C298A6BAC008A3AF9 /* AppDelegate.swift in Sources */,
 				9709F820298A6CE1008A3AF9 /* TaskDetailsViewController.swift in Sources */,
+				97E4B6B6298D44590036C85F /* CircleButton.swift in Sources */,
 				9709F80E298A6BAC008A3AF9 /* SceneDelegate.swift in Sources */,
 				9709F826298A6D84008A3AF9 /* TaskCell.swift in Sources */,
 				9709F82D298A6DF6008A3AF9 /* Task.swift in Sources */,

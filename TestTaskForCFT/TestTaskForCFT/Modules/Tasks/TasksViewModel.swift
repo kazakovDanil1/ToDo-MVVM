@@ -9,4 +9,10 @@ import Foundation
 
 class TasksViewModel {
     
+    @objc func createNewTask() {
+        print("New task created")
+    }
+    
+    
+    
 }
