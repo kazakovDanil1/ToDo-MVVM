@@ -8,52 +8,34 @@
 import UIKit
 
 class TasksTableViewController: UIViewController {
-
+    
     private let taskViewModel = TasksViewModel()
     private let tasksTableView = TasksTableView()
     private let button = CircleButton(action: #selector(createNewTask))
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addSubviews()
         setupNavigationController()
         setupTableViewControllerDelegates()
     }
-    
-    @objc func createNewTask() {
-        taskViewModel.createNewTask()
-    }
-    
-    func setupNavigationController() {
-        navigationItem.title = "hello"
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    func addSubviews() {
-        view.addSubview(tasksTableView)
-        tasksTableView.addSubview(button)
-    }
-    
-    func setupTableViewControllerDelegates() {
-        tasksTableView.delegate = self
-        tasksTableView.dataSource = self
-    }
-    
-    override func viewWillLayoutSubviews() {
-        button.layer.cornerRadius = button.frame.height / 2
-    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tasksTableView.frame = view.bounds
         
-        NSLayoutConstraint.activate([
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            button.heightAnchor.constraint(equalToConstant: 100),
-            button.widthAnchor.constraint(equalToConstant: 100)
-        ])
+        setTableViewFrame()
+        setConstraints()
+        
+        button.layer.cornerRadius = 40
     }
+    
+    @objc func createNewTask() {
+        DispatchQueue.main.async {
+            self.taskViewModel.createTask(controller: self)
+        }
+    }
+
 }
 
 extension TasksTableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -90,7 +72,11 @@ extension TasksTableViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
+        
         return 100
     }
     
@@ -108,4 +94,37 @@ extension TasksTableViewController: UITableViewDelegate, UITableViewDataSource {
         
         return 1
     }
+}
+
+
+extension TasksTableViewController {
+    
+    func setupNavigationController() {
+        navigationItem.title = "hello"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func setTableViewFrame() {
+        tasksTableView.frame = view.bounds
+    }
+    
+    func addSubviews() {
+        view.addSubview(tasksTableView)
+        tasksTableView.addSubview(button)
+    }
+    
+    func setupTableViewControllerDelegates() {
+        tasksTableView.delegate = self
+        tasksTableView.dataSource = self
+    }
+    
+    func setConstraints() {
+        NSLayoutConstraint.activate([
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            button.heightAnchor.constraint(equalToConstant: 80),
+            button.widthAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+    
 }

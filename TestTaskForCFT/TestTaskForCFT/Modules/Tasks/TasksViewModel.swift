@@ -6,13 +6,18 @@
 //
 
 import Foundation
+import UIKit.UIViewController
 
 class TasksViewModel {
     
-    @objc func createNewTask() {
-        print("New task created")
+    let taskAlert = TaskAlert()
+    
+    func createTask(controller: UIViewController) {
+        taskAlert.showAlert(
+            title: "Hello",
+            message: "hello",
+            controller: controller
+        )
     }
-    
-    
     
 }
