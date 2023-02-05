@@ -42,7 +42,8 @@ class TaskAlert {
     func showAlert(
         title: String,
         message: String,
-        controller: UIViewController
+        controller: UIViewController,
+        completion: @escaping((String) -> ())
     ) {
         guard let targetView = controller.view
         else {
@@ -104,6 +105,7 @@ class TaskAlert {
             if done {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.alertView.center = targetView.center
+                    completion(taskField.text)
                 })
             }
         })
@@ -161,12 +163,16 @@ class TaskAlert {
         
         buttonAlert.addTarget(
             self,
-            action: #selector(dismissAlert),
+            action: #selector(createTask),
             for: .touchUpInside
         )
         buttonAlert.tintColor = .black
         
         return buttonAlert
+    }
+    
+    @objc func createTask() {
+        print("task created")
     }
     
     //MARK: ALERT DISMISS

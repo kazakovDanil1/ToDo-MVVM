@@ -32,7 +32,7 @@ class TasksTableViewController: UIViewController {
     
     @objc func createNewTask() {
         DispatchQueue.main.async {
-            self.taskViewModel.createTask(controller: self)
+            self.taskViewModel.callAlert(controller: self)
         }
     }
     

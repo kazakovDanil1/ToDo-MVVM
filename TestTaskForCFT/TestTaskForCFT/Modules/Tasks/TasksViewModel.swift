@@ -12,12 +12,14 @@ class TasksViewModel {
     
     let taskAlert = TaskAlert()
     
-    func createTask(controller: UIViewController) {
+    func callAlert(controller: UIViewController) {
+        
         taskAlert.showAlert(
             title: "Hello",
             message: "hello",
-            controller: controller
-        )
+            controller: controller) { text in
+                print("it's text \(text)")
+            }
     }
     
 }
