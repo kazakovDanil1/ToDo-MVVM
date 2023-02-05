@@ -12,7 +12,7 @@ class TasksTableViewController: UIViewController {
     private let taskViewModel = TasksViewModel()
     private let tasksTableView = TasksTableView()
     private let button = CircleButton(action: #selector(createNewTask))
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +20,7 @@ class TasksTableViewController: UIViewController {
         setupNavigationController()
         setupTableViewControllerDelegates()
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -35,17 +35,19 @@ class TasksTableViewController: UIViewController {
             self.taskViewModel.createTask(controller: self)
         }
     }
-
+    
 }
 
-extension TasksTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension TasksTableViewController:
+    UITableViewDelegate,
+    UITableViewDataSource {
     
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         navigationController?.pushViewController(
             TaskDetailsViewController(),
             animated: true
@@ -98,6 +100,12 @@ extension TasksTableViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension TasksTableViewController {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        self.taskViewModel.taskAlert.dismissAlert()
+    }
     
     func setupNavigationController() {
         navigationItem.title = "hello"

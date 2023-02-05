@@ -15,6 +15,7 @@ class TaskAlert {
     
     private var myTargetView: UIView?
     
+    //MARK: ALERT - ELEMENTS
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .none
@@ -37,7 +38,7 @@ class TaskAlert {
         
         return view
     }()
-    
+    //MARK: - ALERT FUNCTION
     func showAlert(
         title: String,
         message: String,
@@ -70,18 +71,12 @@ class TaskAlert {
         )
         alertView.addSubview(backgroundImage)
         
-        let titleLabel = UILabel(
-            frame: CGRect(
-                x: 0,
-                y: backgroundImage.bounds.minY - 30,
-                width: alertView.frame.size.width,
-                height: 80
-            )
+        let titleLabel = createTitleLabel(
+            x: 0,
+            y: Int(backgroundImage.bounds.minY - 30),
+            width: Int(alertView.frame.size.width),
+            height: 80
         )
-        titleLabel.text = "new task"
-        titleLabel.font = .systemFont(ofSize: 30)
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
         
         let taskField = CustomViewField(
             frame: CGRect(
@@ -92,30 +87,12 @@ class TaskAlert {
             )
         )
         
-        
-        let buttonAlert = UIButton(
-            frame: CGRect(
-                x: 0,
-                y: taskField.frame.maxY,
-                width: backgroundImage.bounds.width,
-                height: 100
-            )
+        let buttonAlert = createButton(
+            x: 0,
+            y: Int(taskField.frame.maxY),
+            width: Int(backgroundImage.bounds.width),
+            height: 100
         )
-        
-        guard let arrow = UIImage(
-            systemName: "arrow.down.circle.fill"
-        ) else {
-            return
-        }
-        buttonAlert.setImage(
-            arrow, for: .normal
-        )
-        buttonAlert.addTarget(
-            self,
-            action: #selector(dismissAlert),
-            for: .touchUpInside
-        )
-        buttonAlert.tintColor = .black
         
         alertView.addSubview(titleLabel)
         alertView.addSubview(taskField)
@@ -132,7 +109,67 @@ class TaskAlert {
         })
         
     }
+    //MARK: - CREATE ALERT UI
+    func createTitleLabel(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int
+    ) -> UILabel {
+        let titleLabel = UILabel(
+            frame: CGRect(
+                x: x,
+                y: y,
+                width: width,
+                height: height
+            )
+        )
+        
+        titleLabel.text = "new task"
+        titleLabel.font = .systemFont(ofSize: 30)
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .center
+        
+        return titleLabel
+    }
     
+    func createButton(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int
+    ) -> UIButton {
+        
+        let buttonAlert = UIButton(
+            frame: CGRect(
+                x: x,
+                y: y,
+                width: width,
+                height: height
+            )
+        )
+        
+        guard let arrow = UIImage(
+            systemName: "arrow.down.circle.fill"
+        ) else {
+            return UIButton()
+        }
+        
+        buttonAlert.setImage(
+            arrow, for: .normal
+        )
+        
+        buttonAlert.addTarget(
+            self,
+            action: #selector(dismissAlert),
+            for: .touchUpInside
+        )
+        buttonAlert.tintColor = .black
+        
+        return buttonAlert
+    }
+    
+    //MARK: ALERT DISMISS
     @objc func dismissAlert() {
         guard let targetView = myTargetView else { return }
         
