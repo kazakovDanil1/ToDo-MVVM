@@ -8,12 +8,14 @@
 import UIKit
 
 class TaskAlert {
-    
     struct Constants {
         static let backgroundAlpha: CGFloat = 0.6
     }
     
     private var myTargetView: UIView?
+    private var myTarget: CustomViewField?
+    
+    var taskClosure: ((String) -> ())? = nil
     
     //MARK: ALERT - ELEMENTS
     private let backgroundImage: UIImageView = {
@@ -38,12 +40,13 @@ class TaskAlert {
         
         return view
     }()
+    
+    
     //MARK: - ALERT FUNCTION
     func showAlert(
         title: String,
         message: String,
-        controller: UIViewController,
-        completion: @escaping((String) -> ())
+        controller: UIViewController
     ) {
         guard let targetView = controller.view
         else {
@@ -99,18 +102,21 @@ class TaskAlert {
         alertView.addSubview(taskField)
         alertView.addSubview(buttonAlert)
         
+        
+        myTarget = taskField
+        
         UIView.animate(withDuration: 0.2, animations: {
             self.backgroundView.alpha = Constants.backgroundAlpha
         }, completion: { done in
             if done {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.alertView.center = targetView.center
-                    completion(taskField.text)
                 })
             }
         })
         
     }
+    
     //MARK: - CREATE ALERT UI
     func createTitleLabel(
         x: Int,
@@ -172,7 +178,14 @@ class TaskAlert {
     }
     
     @objc func createTask() {
-        print("task created")
+        guard let myTarget = myTarget else { return }
+        taskClosure?(myTarget.text)
+    }
+
+    func create(completion: @escaping((String) -> ())) {
+        taskClosure = { text in
+            completion(text)
+        }
     }
     
     //MARK: ALERT DISMISS
@@ -195,6 +208,7 @@ class TaskAlert {
                         self.alertView.removeFromSuperview()
                         self.backgroundView.removeFromSuperview()
                         self.backgroundImage.removeFromSuperview()
+                        
                     }
                 })
             }

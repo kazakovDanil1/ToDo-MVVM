@@ -51,13 +51,21 @@ final class TaskCell: UITableViewCell {
     
     override func updateConstraintsIfNeeded() {
         NSLayoutConstraint.activate([
-            cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cellView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            
-            taskLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
+            cellView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor
+            ),
+            cellView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor
+            ),
+            cellView.topAnchor.constraint(
+                equalTo: contentView.topAnchor
+            ),
+            cellView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor
+            ),
+            taskLabel.centerYAnchor.constraint(
+                equalTo: cellView.centerYAnchor
+            ),
         ])
     }
     

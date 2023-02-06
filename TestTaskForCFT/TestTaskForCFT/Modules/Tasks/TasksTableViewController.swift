@@ -9,8 +9,9 @@ import UIKit
 
 class TasksTableViewController: UIViewController {
     
-    private let taskViewModel = TasksViewModel()
+    private let tasksViewModel = TasksViewModel()
     private let tasksTableView = TasksTableView()
+    
     private let button = CircleButton(action: #selector(createNewTask))
     
     override func viewDidLoad() {
@@ -32,7 +33,8 @@ class TasksTableViewController: UIViewController {
     
     @objc func createNewTask() {
         DispatchQueue.main.async {
-            self.taskViewModel.callAlert(controller: self)
+            self.tasksViewModel.callAlert(controller: self)
+            self.tasksViewModel.saveTask()
         }
     }
     
@@ -67,9 +69,17 @@ extension TasksTableViewController:
             return UITableViewCell()
         }
         
-        cell.taskLabel.text = "welcome"
-        cell.cellView.backgroundColor = .blue
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.layer.cornerRadius = 10
+        cell.layer.shadowRadius = 9
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.shadowOffset = CGSize(width: 5, height: 5)
+        cell.layer.masksToBounds = true
+        cell.clipsToBounds = false
         
+        cell.taskLabel.text = tasksViewModel.tasks[indexPath.section].description
+        cell.cellView.backgroundColor = .blue
         
         return cell
     }
@@ -86,7 +96,7 @@ extension TasksTableViewController:
         in tableView: UITableView
     ) -> Int {
         
-        return 3
+        return tasksViewModel.tasks.count
     }
     
     func tableView(
@@ -101,10 +111,19 @@ extension TasksTableViewController:
 
 extension TasksTableViewController {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    func reloadTableView() {
+        DispatchQueue.main.async { [weak self] in
+            self?.reloadTableView()
+        }
+    }
+    
+    override func touchesBegan(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
         super.touchesBegan(touches, with: event)
         
-        self.taskViewModel.taskAlert.dismissAlert()
+        self.tasksViewModel.taskAlert.dismissAlert()
     }
     
     func setupNavigationController() {
@@ -128,10 +147,18 @@ extension TasksTableViewController {
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            button.heightAnchor.constraint(equalToConstant: 80),
-            button.widthAnchor.constraint(equalToConstant: 80)
+            button.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor, constant: -20
+            ),
+            button.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20
+            ),
+            button.heightAnchor.constraint(
+                equalToConstant: 80
+            ),
+            button.widthAnchor.constraint(
+                equalToConstant: 80
+            )
         ])
     }
     

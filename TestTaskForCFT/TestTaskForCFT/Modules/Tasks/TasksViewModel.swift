@@ -10,16 +10,37 @@ import UIKit.UIViewController
 
 class TasksViewModel {
     
+    var tasks: [Task] = []
+    
     let taskAlert = TaskAlert()
     
     func callAlert(controller: UIViewController) {
-        
         taskAlert.showAlert(
             title: "Hello",
             message: "hello",
-            controller: controller) { text in
-                print("it's text \(text)")
-            }
+            controller: controller)
     }
+    
+    func saveTask() {
+        let vc = TasksTableViewController()
+        
+        
+        taskAlert.create { text in
+            if !(text).isEmpty {
+                
+                let task = Task(
+                    name: "Example",
+                    description: "\(text)",
+                    date: "01.01.01",
+                    completionStatus: false
+                )
+                
+                self.tasks.append(task)
+                self.taskAlert.dismissAlert()
+                vc.reloadTableView()
+            } 
+        }
+    }
+    
     
 }
