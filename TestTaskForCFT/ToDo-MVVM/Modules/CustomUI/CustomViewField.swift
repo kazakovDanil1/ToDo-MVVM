@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomViewField: UITextView {
+final class CustomViewField: UITextView {
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -20,6 +20,16 @@ class CustomViewField: UITextView {
         isEditable = true
         textColor = .white
         backgroundColor = .clear
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    convenience init(cornerRadius: CGFloat) {
+        self.init(frame: .zero)
+        clipsToBounds = true
+        layer.cornerRadius = cornerRadius
+        backgroundColor = .blue
+        textColor = .white
+        
     }
     
     required init?(coder: NSCoder) {

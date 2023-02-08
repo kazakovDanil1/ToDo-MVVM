@@ -12,12 +12,13 @@
 		9709F810298A6BAC008A3AF9 /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F80F298A6BAC008A3AF9 /* TasksTableViewController.swift */; };
 		9709F815298A6BAE008A3AF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9709F814298A6BAE008A3AF9 /* Assets.xcassets */; };
 		9709F818298A6BAE008A3AF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9709F816298A6BAE008A3AF9 /* LaunchScreen.storyboard */; };
-		9709F820298A6CE1008A3AF9 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F81F298A6CE1008A3AF9 /* TaskDetailsViewController.swift */; };
 		9709F823298A6D36008A3AF9 /* TasksTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F822298A6D36008A3AF9 /* TasksTableView.swift */; };
 		9709F826298A6D84008A3AF9 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F825298A6D84008A3AF9 /* TaskCell.swift */; };
-		9709F828298A6D9C008A3AF9 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F827298A6D9C008A3AF9 /* TaskDetailsView.swift */; };
 		9709F82B298A6DDE008A3AF9 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F82A298A6DDE008A3AF9 /* TasksViewModel.swift */; };
 		9709F82D298A6DF6008A3AF9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709F82C298A6DF6008A3AF9 /* Task.swift */; };
+		9738754D29928B8B00037503 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9738754C29928B8B00037503 /* TaskDetailsViewController.swift */; };
+		9738754F29928BC300037503 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9738754E29928BC300037503 /* TaskDetailsView.swift */; };
+		973875522992B74000037503 /* TaskDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973875512992B74000037503 /* TaskDetailsViewModel.swift */; };
 		9781639E298EA2AB0021A02F /* TaskAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9781639D298EA2AB0021A02F /* TaskAlert.swift */; };
 		978163A4298FF2FD0021A02F /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978163A3298FF2FD0021A02F /* CustomField.swift */; };
 		978163A6298FF8300021A02F /* CustomViewField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978163A5298FF8300021A02F /* CustomViewField.swift */; };
@@ -25,19 +26,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9709F808298A6BAC008A3AF9 /* TestTaskForCFT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTaskForCFT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9709F808298A6BAC008A3AF9 /* ToDo-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9709F80B298A6BAC008A3AF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9709F80D298A6BAC008A3AF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9709F80F298A6BAC008A3AF9 /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		9709F814298A6BAE008A3AF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9709F817298A6BAE008A3AF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9709F819298A6BAE008A3AF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9709F81F298A6CE1008A3AF9 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
 		9709F822298A6D36008A3AF9 /* TasksTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableView.swift; sourceTree = "<group>"; };
 		9709F825298A6D84008A3AF9 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		9709F827298A6D9C008A3AF9 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		9709F82A298A6DDE008A3AF9 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		9709F82C298A6DF6008A3AF9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9738754C29928B8B00037503 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
+		9738754E29928BC300037503 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
+		973875512992B74000037503 /* TaskDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewModel.swift; sourceTree = "<group>"; };
 		9781639D298EA2AB0021A02F /* TaskAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAlert.swift; sourceTree = "<group>"; };
 		978163A3298FF2FD0021A02F /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		978163A5298FF8300021A02F /* CustomViewField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewField.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		9709F7FF298A6BAC008A3AF9 = {
 			isa = PBXGroup;
 			children = (
-				9709F80A298A6BAC008A3AF9 /* TestTaskForCFT */,
+				9709F80A298A6BAC008A3AF9 /* ToDo-MVVM */,
 				9709F809298A6BAC008A3AF9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,12 +68,12 @@
 		9709F809298A6BAC008A3AF9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9709F808298A6BAC008A3AF9 /* TestTaskForCFT.app */,
+				9709F808298A6BAC008A3AF9 /* ToDo-MVVM.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9709F80A298A6BAC008A3AF9 /* TestTaskForCFT */ = {
+		9709F80A298A6BAC008A3AF9 /* ToDo-MVVM */ = {
 			isa = PBXGroup;
 			children = (
 				97E53336298AA600005F8D88 /* Application */,
@@ -79,7 +81,7 @@
 				9709F829298A6DB1008A3AF9 /* Modules */,
 				97E53337298AA656005F8D88 /* Resources */,
 			);
-			path = TestTaskForCFT;
+			path = "ToDo-MVVM";
 			sourceTree = "<group>";
 		};
 		9709F821298A6D16008A3AF9 /* Tasks */ = {
@@ -96,8 +98,9 @@
 		9709F824298A6D40008A3AF9 /* TaskDetails */ = {
 			isa = PBXGroup;
 			children = (
-				9709F81F298A6CE1008A3AF9 /* TaskDetailsViewController.swift */,
-				9709F827298A6D9C008A3AF9 /* TaskDetailsView.swift */,
+				973875512992B74000037503 /* TaskDetailsViewModel.swift */,
+				9738754C29928B8B00037503 /* TaskDetailsViewController.swift */,
+				9738754E29928BC300037503 /* TaskDetailsView.swift */,
 			);
 			path = TaskDetails;
 			sourceTree = "<group>";
@@ -107,6 +110,7 @@
 			children = (
 				9709F821298A6D16008A3AF9 /* Tasks */,
 				9709F824298A6D40008A3AF9 /* TaskDetails */,
+				973875502992B3D200037503 /* TaskAlert */,
 				97E4B6B7298D445C0036C85F /* CustomUI */,
 			);
 			path = Modules;
@@ -120,11 +124,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		973875502992B3D200037503 /* TaskAlert */ = {
+			isa = PBXGroup;
+			children = (
+				9781639D298EA2AB0021A02F /* TaskAlert.swift */,
+			);
+			path = TaskAlert;
+			sourceTree = "<group>";
+		};
 		97E4B6B7298D445C0036C85F /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
 				97E4B6B5298D44590036C85F /* CircleButton.swift */,
-				9781639D298EA2AB0021A02F /* TaskAlert.swift */,
 				978163A3298FF2FD0021A02F /* CustomField.swift */,
 				978163A5298FF8300021A02F /* CustomViewField.swift */,
 			);
@@ -153,9 +164,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9709F807298A6BAC008A3AF9 /* TestTaskForCFT */ = {
+		9709F807298A6BAC008A3AF9 /* ToDo-MVVM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9709F81C298A6BAE008A3AF9 /* Build configuration list for PBXNativeTarget "TestTaskForCFT" */;
+			buildConfigurationList = 9709F81C298A6BAE008A3AF9 /* Build configuration list for PBXNativeTarget "ToDo-MVVM" */;
 			buildPhases = (
 				9709F804298A6BAC008A3AF9 /* Sources */,
 				9709F805298A6BAC008A3AF9 /* Frameworks */,
@@ -165,9 +176,9 @@
 			);
 			dependencies = (
 			);
-			name = TestTaskForCFT;
+			name = "ToDo-MVVM";
 			productName = TestTaskForCFT;
-			productReference = 9709F808298A6BAC008A3AF9 /* TestTaskForCFT.app */;
+			productReference = 9709F808298A6BAC008A3AF9 /* ToDo-MVVM.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -185,7 +196,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9709F803298A6BAC008A3AF9 /* Build configuration list for PBXProject "TestTaskForCFT" */;
+			buildConfigurationList = 9709F803298A6BAC008A3AF9 /* Build configuration list for PBXProject "ToDo-MVVM" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -198,7 +209,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9709F807298A6BAC008A3AF9 /* TestTaskForCFT */,
+				9709F807298A6BAC008A3AF9 /* ToDo-MVVM */,
 			);
 		};
 /* End PBXProject section */
@@ -222,12 +233,13 @@
 			files = (
 				9709F810298A6BAC008A3AF9 /* TasksTableViewController.swift in Sources */,
 				9709F82B298A6DDE008A3AF9 /* TasksViewModel.swift in Sources */,
-				9709F828298A6D9C008A3AF9 /* TaskDetailsView.swift in Sources */,
 				978163A4298FF2FD0021A02F /* CustomField.swift in Sources */,
 				9709F80C298A6BAC008A3AF9 /* AppDelegate.swift in Sources */,
+				9738754D29928B8B00037503 /* TaskDetailsViewController.swift in Sources */,
 				978163A6298FF8300021A02F /* CustomViewField.swift in Sources */,
-				9709F820298A6CE1008A3AF9 /* TaskDetailsViewController.swift in Sources */,
+				973875522992B74000037503 /* TaskDetailsViewModel.swift in Sources */,
 				97E4B6B6298D44590036C85F /* CircleButton.swift in Sources */,
+				9738754F29928BC300037503 /* TaskDetailsView.swift in Sources */,
 				9709F80E298A6BAC008A3AF9 /* SceneDelegate.swift in Sources */,
 				9781639E298EA2AB0021A02F /* TaskAlert.swift in Sources */,
 				9709F826298A6D84008A3AF9 /* TaskCell.swift in Sources */,
@@ -373,8 +385,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TFHTVVP3TH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTaskForCFT/Application/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TestTaskForCFT;
+				INFOPLIST_FILE = "ToDo-MVVM/Application/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ToDo-MVVM";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -386,7 +398,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kazakov.TestTaskForCFT;
+				PRODUCT_BUNDLE_IDENTIFIER = "kazakov.ToDo-MVVM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -406,8 +418,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TFHTVVP3TH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTaskForCFT/Application/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TestTaskForCFT;
+				INFOPLIST_FILE = "ToDo-MVVM/Application/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "ToDo-MVVM";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -419,7 +431,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kazakov.TestTaskForCFT;
+				PRODUCT_BUNDLE_IDENTIFIER = "kazakov.ToDo-MVVM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -433,7 +445,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9709F803298A6BAC008A3AF9 /* Build configuration list for PBXProject "TestTaskForCFT" */ = {
+		9709F803298A6BAC008A3AF9 /* Build configuration list for PBXProject "ToDo-MVVM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9709F81A298A6BAE008A3AF9 /* Debug */,
@@ -442,7 +454,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9709F81C298A6BAE008A3AF9 /* Build configuration list for PBXNativeTarget "TestTaskForCFT" */ = {
+		9709F81C298A6BAE008A3AF9 /* Build configuration list for PBXNativeTarget "ToDo-MVVM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9709F81D298A6BAE008A3AF9 /* Debug */,

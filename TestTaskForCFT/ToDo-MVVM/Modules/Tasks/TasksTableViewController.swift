@@ -18,8 +18,9 @@ class TasksTableViewController: UIViewController {
         super.viewDidLoad()
         
         addSubviews()
-        setupNavigationController()
-        setupTableViewControllerDelegates()
+        setNavigationController()
+        setTableViewControllerDelegates()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -31,13 +32,13 @@ class TasksTableViewController: UIViewController {
         button.layer.cornerRadius = 40
     }
     
+    
     @objc func createNewTask() {
         DispatchQueue.main.async {
             self.tasksViewModel.callAlert(controller: self)
             self.tasksViewModel.saveTask()
         }
     }
-    
 }
 
 extension TasksTableViewController:
@@ -50,11 +51,19 @@ extension TasksTableViewController:
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        navigationController?.pushViewController(
-            TaskDetailsViewController(),
-            animated: true
-        )
+        let detailsViewController = TaskDetailsViewController()
         
+        let task = tasksViewModel.tasks[indexPath.section]
+        
+        let detailsViewModel = TaskDetailsViewModel { myTask in
+            detailsViewController.viewModel.task = myTask
+        }
+        
+        detailsViewModel.grabTask?(task)
+        
+        navigationController?.pushViewController(
+            detailsViewController, animated: true
+        )
     }
     
     func tableView(
@@ -68,18 +77,11 @@ extension TasksTableViewController:
             
             return UITableViewCell()
         }
+        setupCustomizationFor(cell)
         
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.layer.cornerRadius = 10
-        cell.layer.shadowRadius = 9
-        cell.layer.shadowOpacity = 0.3
-        cell.layer.shadowOffset = CGSize(width: 5, height: 5)
-        cell.layer.masksToBounds = true
-        cell.clipsToBounds = false
-        
-        cell.taskLabel.text = tasksViewModel.tasks[indexPath.section].description
-        cell.cellView.backgroundColor = .blue
+        cell.taskLabel.text = tasksViewModel.tasks[
+            indexPath.section
+        ].description
         
         return cell
     }
@@ -96,7 +98,7 @@ extension TasksTableViewController:
         in tableView: UITableView
     ) -> Int {
         
-        return tasksViewModel.tasks.count
+        tasksViewModel.numberOfRowsInSection()
     }
     
     func tableView(
@@ -110,6 +112,18 @@ extension TasksTableViewController:
 
 
 extension TasksTableViewController {
+    
+    func setupCustomizationFor(_ cell: TaskCell) {
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.layer.cornerRadius = 10
+        cell.layer.shadowRadius = 9
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.shadowOffset = CGSize(width: 5, height: 5)
+        cell.layer.masksToBounds = true
+        cell.clipsToBounds = false
+        cell.cellView.backgroundColor = .blue
+    }
     
     func reloadTableView() {
         DispatchQueue.main.async { [weak self] in
@@ -126,8 +140,8 @@ extension TasksTableViewController {
         self.tasksViewModel.taskAlert.dismissAlert()
     }
     
-    func setupNavigationController() {
-        navigationItem.title = "hello"
+    func setNavigationController() {
+        navigationItem.title = "Tasks"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -140,7 +154,7 @@ extension TasksTableViewController {
         tasksTableView.addSubview(button)
     }
     
-    func setupTableViewControllerDelegates() {
+    func setTableViewControllerDelegates() {
         tasksTableView.delegate = self
         tasksTableView.dataSource = self
     }

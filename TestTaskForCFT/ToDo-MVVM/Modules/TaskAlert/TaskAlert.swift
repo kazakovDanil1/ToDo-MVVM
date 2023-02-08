@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TaskAlert {
+final class TaskAlert {
     struct Constants {
         static let backgroundAlpha: CGFloat = 0.6
     }
@@ -41,11 +41,8 @@ class TaskAlert {
         return view
     }()
     
-    
     //MARK: - ALERT FUNCTION
     func showAlert(
-        title: String,
-        message: String,
         controller: UIViewController
     ) {
         guard let targetView = controller.view
@@ -169,7 +166,7 @@ class TaskAlert {
         
         buttonAlert.addTarget(
             self,
-            action: #selector(createTask),
+            action: #selector(captureTask),
             for: .touchUpInside
         )
         buttonAlert.tintColor = .black
@@ -177,12 +174,12 @@ class TaskAlert {
         return buttonAlert
     }
     
-    @objc func createTask() {
+    @objc func captureTask() {
         guard let myTarget = myTarget else { return }
         taskClosure?(myTarget.text)
     }
 
-    func create(completion: @escaping((String) -> ())) {
+    func grabTask(completion: @escaping((String) -> ())) {
         taskClosure = { text in
             completion(text)
         }

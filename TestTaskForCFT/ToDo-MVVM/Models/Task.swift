@@ -9,18 +9,18 @@ import Foundation
 
 struct Task {
     
-    let name: String
     let description: String
-    let date: String
+    let deadLine: String
     let completionStatus: Bool
+    let number: Int
     
     static func createTask() -> [Task] {
         let tasks = [
             Task(
-                name: "Example",
                 description: "do something",
-                date: "01.01.01",
-                completionStatus: false
+                deadLine: "01.01.01",
+                completionStatus: false,
+                number: 0
             )
         ]
         
