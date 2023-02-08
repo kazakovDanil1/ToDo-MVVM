@@ -12,15 +12,16 @@ final class CircleButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        clipsToBounds = true
         backgroundColor = .white
         setImage(UIImage(systemName: "plus"), for: .normal)
         imageView?.layer.transform = CATransform3DMakeScale(1.8, 1.8, 2.5)
+        self.makeShadows(radius: 15)
     }
     
     convenience init(action: Selector) {
         self.init(frame: .zero)
         self.addTarget(nil, action: action, for: .touchUpInside)
+//        clipsToBounds = false
     }
     
     required init?(coder: NSCoder) {

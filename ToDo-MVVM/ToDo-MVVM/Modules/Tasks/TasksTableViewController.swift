@@ -27,9 +27,10 @@ class TasksTableViewController: UIViewController {
         
         setTableViewFrame()
         setConstraints()
-        
         button.layer.cornerRadius = 40
     }
+    
+    
     
     @objc func createNewTask() {
         DispatchQueue.main.async {
@@ -108,6 +109,40 @@ extension TasksTableViewController:
     
     func tableView(
         _ tableView: UITableView,
+        editingStyleForRowAt indexPath: IndexPath
+    ) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            
+            tasksViewModel.tasks.remove(at: indexPath.section)
+            tasksViewModel.saveTask()
+            tableView.deleteSections(
+                [indexPath.section],
+                with: .fade
+            )
+            self.tasksTableView.reloadData()
+            tableView.endUpdates()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        
+        return headerView
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
         heightForHeaderInSection section: Int
     ) -> CGFloat {
         10
@@ -137,7 +172,8 @@ extension TasksTableViewController:
 
 extension TasksTableViewController {
     
-    func setupCustomizationFor(_ cell: TaskCell) {
+    private func setupCustomizationFor(_ cell: TaskCell) {
+        cell.backgroundColor = .clear
         cell.selectionStyle = .none
         cell.layer.cornerRadius = 10
         cell.layer.shadowRadius = 9
@@ -146,10 +182,13 @@ extension TasksTableViewController {
         cell.layer.masksToBounds = true
         cell.clipsToBounds = false
         
-        cell.cellView.layer.cornerRadius = 30
-        
-//        cell.cellView.layer.masksToBounds = true
-//        cell.cellView.clipsToBounds = true
+        cell.cellView.layer.cornerRadius = 20
+        cell.cellView.layer.masksToBounds = true
+    }
+    
+    private func setNavigationController() {
+        navigationItem.title = "Tasks"
+        navigationController?.setupNavBar()
     }
     
     func reloadTableView() {
@@ -167,26 +206,21 @@ extension TasksTableViewController {
         self.tasksViewModel.taskAlert.dismissAlert()
     }
     
-    func setNavigationController() {
-        navigationItem.title = "Tasks"
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    func setTableViewFrame() {
+    private func setTableViewFrame() {
         tasksTableView.frame = view.bounds
     }
     
-    func addSubviews() {
+    private func addSubviews() {
         view.addSubview(tasksTableView)
         tasksTableView.addSubview(button)
     }
     
-    func setTableViewControllerDelegates() {
+    private func setTableViewControllerDelegates() {
         tasksTableView.delegate = self
         tasksTableView.dataSource = self
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         NSLayoutConstraint.activate([
             button.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor, constant: -20

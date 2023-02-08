@@ -18,8 +18,10 @@ class TasksTableView: UITableView {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor(named: "mainColor")
         
-        sectionFooterHeight = 0
+        sectionFooterHeight = 5
         sectionHeaderHeight = 5
+        showsVerticalScrollIndicator = false
+        separatorStyle = .none
     }
     
     required init?(coder: NSCoder) {

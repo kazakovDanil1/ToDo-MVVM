@@ -52,10 +52,10 @@ extension TaskCell {
     override func updateConstraintsIfNeeded() {
         NSLayoutConstraint.activate([
             cellView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor
+                equalTo: contentView.leadingAnchor, constant: 5
             ),
             cellView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor
+                equalTo: contentView.trailingAnchor, constant: -5
             ),
             cellView.topAnchor.constraint(
                 equalTo: contentView.topAnchor

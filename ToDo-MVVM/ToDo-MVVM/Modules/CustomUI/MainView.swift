@@ -8,7 +8,7 @@
 import UIKit
 
 class MainView: UIView {
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(named: "mainColor")
