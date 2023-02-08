@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Task {
+struct Task: Codable {
     
     let description: String
     let deadLine: String
     let completionStatus: Bool
-    let number: Int
+    let number: String
     
     static func createTask() -> [Task] {
         let tasks = [
@@ -20,7 +20,7 @@ struct Task {
                 description: "do something",
                 deadLine: "01.01.01",
                 completionStatus: false,
-                number: 0
+                number: "000"
             )
         ]
         

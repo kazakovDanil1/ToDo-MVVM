@@ -9,25 +9,11 @@ import UIKit
 
 class TaskDetailsView: UIView {
     
-    private let contentView = UIView()
+    private let contentView = MainView()
     
-    let taskLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
-    
-    let taskCount: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
+    let taskLabel = CustomLabel(size: 20, weight: .bold)
+    let taskCount = CustomLabel(size: 20, weight: .bold)
+    let taskView = CustomViewField(cornerRadius: 20)
     
     let button: UIButton = {
         let button = UIButton()
@@ -39,12 +25,9 @@ class TaskDetailsView: UIView {
         return button
     }()
     
-    let taskView = CustomViewField(cornerRadius: 20)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        contentView.backgroundColor = .white
         
         layoutSubviews()
         updateConstraintsIfNeeded()
@@ -116,3 +99,4 @@ extension TaskDetailsView {
     }
     
 }
+

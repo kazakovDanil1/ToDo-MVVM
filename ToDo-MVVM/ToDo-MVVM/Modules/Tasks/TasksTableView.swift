@@ -11,11 +11,15 @@ class TasksTableView: UITableView {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .grouped)
-        translatesAutoresizingMaskIntoConstraints = false
         register(
             TaskCell.self,
             forCellReuseIdentifier: TaskCell.identifier
         )
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = UIColor(named: "mainColor")
+        
+        sectionFooterHeight = 0
+        sectionHeaderHeight = 5
     }
     
     required init?(coder: NSCoder) {
