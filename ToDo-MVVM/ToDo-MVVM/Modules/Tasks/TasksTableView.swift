@@ -16,6 +16,7 @@ class TasksTableView: UITableView {
             TaskCell.self,
             forCellReuseIdentifier: TaskCell.identifier
         )
+        backgroundColor = #colorLiteral(red: 0.117298089, green: 0.1247704551, blue: 0.162137419, alpha: 1)
     }
     
     required init?(coder: NSCoder) {

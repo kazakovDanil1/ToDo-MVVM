@@ -11,14 +11,27 @@ class TaskCell: UITableViewCell {
     
     static let identifier = "TaskCell"
     
-    let cellView = UIView()
-    
     lazy var taskLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    lazy var deadLineLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    lazy var cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .blue
+        
+        return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -30,7 +43,6 @@ class TaskCell: UITableViewCell {
     
     override func layoutIfNeeded() {
         contentView.addSubview(cellView)
-        
         cellView.frame = contentView.bounds
         
         addCellSubviews()
@@ -38,10 +50,12 @@ class TaskCell: UITableViewCell {
     
     func addCellSubviews() {
         cellView.addSubview(taskLabel)
+        cellView.addSubview(deadLineLabel)
     }
     
     override func prepareForReuse() {
         taskLabel.text = nil
+        deadLineLabel.text = nil
     }
     
     required init?(coder: NSCoder) {
@@ -68,6 +82,15 @@ extension TaskCell {
             taskLabel.centerYAnchor.constraint(
                 equalTo: cellView.centerYAnchor
             ),
+            taskLabel.leadingAnchor.constraint(
+                equalTo: cellView.leadingAnchor, constant: 20
+            ),
+            deadLineLabel.centerYAnchor.constraint(
+                equalTo: cellView.centerYAnchor
+            ),
+            deadLineLabel.trailingAnchor.constraint(
+                equalTo: cellView.trailingAnchor, constant: -20
+            )
         ])
     }
 }
