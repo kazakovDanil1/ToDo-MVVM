@@ -21,7 +21,6 @@ final class CircleButton: UIButton {
     convenience init(action: Selector) {
         self.init(frame: .zero)
         self.addTarget(nil, action: action, for: .touchUpInside)
-//        clipsToBounds = false
     }
     
     required init?(coder: NSCoder) {

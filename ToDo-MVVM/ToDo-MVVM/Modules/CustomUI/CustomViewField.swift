@@ -27,7 +27,7 @@ class CustomViewField: UITextView {
         self.init(frame: .zero)
         clipsToBounds = true
         layer.cornerRadius = cornerRadius
-        backgroundColor = .blue
+        backgroundColor = UIColor(named: "taskCellColor")
         textColor = .white
     }
     

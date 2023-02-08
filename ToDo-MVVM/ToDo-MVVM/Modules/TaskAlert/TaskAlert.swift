@@ -9,7 +9,7 @@ import UIKit
 
 final class TaskAlert {
     struct Constants {
-        static let backgroundAlpha: CGFloat = 0.6
+        static let backgroundAlpha: CGFloat = 0.4
     }
     
     private var myTargetView: UIView?

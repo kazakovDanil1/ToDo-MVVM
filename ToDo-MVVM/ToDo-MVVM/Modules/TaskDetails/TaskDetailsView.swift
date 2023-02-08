@@ -12,19 +12,9 @@ class TaskDetailsView: UIView {
     private let contentView = MainView()
     
     let taskLabel = CustomLabel(size: 20, weight: .bold)
-    let taskCount = CustomLabel(size: 20, weight: .bold)
     let taskView = CustomViewField(cornerRadius: 20)
     
-    let button: UIButton = {
-        let button = UIButton()
-        button.frame.size = CGSize(width: 100, height: 100)
-        button.backgroundColor = .blue
-        button.setTitle("update task", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
+    let button = customButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +26,6 @@ class TaskDetailsView: UIView {
     func addViews() {
         contentView.addSubview(taskLabel)
         contentView.addSubview(taskView)
-        contentView.addSubview(taskCount)
         contentView.addSubview(button)
     }
     
@@ -63,38 +52,44 @@ extension TaskDetailsView {
         super.updateConstraintsIfNeeded()
         
         NSLayoutConstraint.activate([
-            taskCount.bottomAnchor.constraint(
-                equalTo: taskLabel.topAnchor, constant: -20
+            taskLabel.topAnchor.constraint(
+                equalTo: contentView.safeAreaLayoutGuide.topAnchor,
+                constant: 20
             ),
-            taskCount.centerXAnchor.constraint(
-                equalTo: taskLabel.centerXAnchor
-            ),
-            taskLabel.bottomAnchor.constraint(
-                equalTo: taskView.topAnchor, constant: -20
+            taskView.topAnchor.constraint(
+                equalTo: taskLabel.bottomAnchor, constant: 20
             ),
             taskLabel.centerXAnchor.constraint(
-                equalTo: taskView.centerXAnchor
-            ),
-            
-            taskView.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
             ),
-            taskView.centerYAnchor.constraint(
-                equalTo: contentView.centerYAnchor
+            taskView.centerXAnchor.constraint(
+                equalTo: taskLabel.centerXAnchor
             ),
-            taskView.widthAnchor.constraint(
-                equalToConstant: 200
+            taskView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor, constant: 30
+            ),
+            taskView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor, constant: -30
             ),
             taskView.heightAnchor.constraint(
-                equalToConstant: 300
+                equalToConstant: 200
             ),
-            
             button.topAnchor.constraint(
                 equalTo: taskView.bottomAnchor, constant: 20
             ),
             button.centerXAnchor.constraint(
                 equalTo: taskView.centerXAnchor
+            ),
+            button.heightAnchor.constraint(
+                equalToConstant: 80
+            ),
+            button.leadingAnchor.constraint(
+                equalTo: taskView.leadingAnchor, constant: 20
+            ),
+            button.trailingAnchor.constraint(
+                equalTo: taskView.trailingAnchor, constant: -20
             )
+            
         ])
     }
     

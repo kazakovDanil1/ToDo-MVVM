@@ -30,8 +30,6 @@ class TasksTableViewController: UIViewController {
         button.layer.cornerRadius = 40
     }
     
-    
-    
     @objc func createNewTask() {
         DispatchQueue.main.async {
             self.tasksViewModel.callAlert(controller: self)
@@ -45,8 +43,8 @@ extension TasksTableViewController: TaskDetailsViewModelDelegate {
     func updateTask(task: Task) {
         let newTask = task
 
-        if let row = tasksViewModel.tasks.firstIndex(where: {
-            $0.number == newTask.number }
+        if let row = tasksViewModel.tasks.firstIndex(
+            where: { $0.number == newTask.number }
         ) {
             self.tasksViewModel.tasks[row] = newTask
             self.tasksTableView.reloadData()
@@ -125,10 +123,12 @@ extension TasksTableViewController:
             
             tasksViewModel.tasks.remove(at: indexPath.section)
             tasksViewModel.saveTask()
+            
             tableView.deleteSections(
                 [indexPath.section],
                 with: .fade
             )
+            
             self.tasksTableView.reloadData()
             tableView.endUpdates()
         }

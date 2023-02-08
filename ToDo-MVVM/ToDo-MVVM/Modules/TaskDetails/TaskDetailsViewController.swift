@@ -41,7 +41,6 @@ class TaskDetailsViewController: UIViewController {
     func fillContentView() {
         contentView?.taskLabel.text = viewModel.task?.deadLine
         contentView?.taskView.text = viewModel.task?.description
-        contentView?.taskCount.text = viewModel.task?.number
     }
 }
 
