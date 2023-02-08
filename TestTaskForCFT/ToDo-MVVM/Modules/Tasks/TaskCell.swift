@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TaskCell: UITableViewCell {
+class TaskCell: UITableViewCell {
     
     static let identifier = "TaskCell"
     
@@ -25,12 +25,7 @@ final class TaskCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         layoutIfNeeded()
-        
         updateConstraintsIfNeeded()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutIfNeeded() {
@@ -49,16 +44,30 @@ final class TaskCell: UITableViewCell {
         taskLabel.text = nil
     }
     
-    override func updateConstraintsIfNeeded() {
-        NSLayoutConstraint.activate([
-            cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cellView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            
-            taskLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor),
-        ])
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension TaskCell {
+    override func updateConstraintsIfNeeded() {
+        NSLayoutConstraint.activate([
+            cellView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor
+            ),
+            cellView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor
+            ),
+            cellView.topAnchor.constraint(
+                equalTo: contentView.topAnchor
+            ),
+            cellView.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor
+            ),
+            taskLabel.centerYAnchor.constraint(
+                equalTo: cellView.centerYAnchor
+            ),
+        ])
+    }
 }
