@@ -92,7 +92,6 @@ extension TasksTableViewController:
             
             return UITableViewCell()
         }
-        setupCustomizationFor(cell)
         
         cell.taskLabel.text = tasksViewModel.tasks[
             indexPath.section
@@ -103,6 +102,13 @@ extension TasksTableViewController:
         ].deadLine
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: TaskCell.identifier, for: indexPath) as? TaskCell else { return }
+        
+        setupCustomizationFor(cell)
     }
     
     
@@ -117,7 +123,7 @@ extension TasksTableViewController:
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
-        80
+        70
     }
     
     func tableView(
@@ -138,7 +144,6 @@ extension TasksTableViewController:
 extension TasksTableViewController {
     
     func setupCustomizationFor(_ cell: TaskCell) {
-        cell.backgroundColor = .clear
         cell.selectionStyle = .none
         cell.layer.cornerRadius = 10
         cell.layer.shadowRadius = 9
@@ -147,8 +152,10 @@ extension TasksTableViewController {
         cell.layer.masksToBounds = true
         cell.clipsToBounds = false
         
-        cell.cellView.layer.cornerRadius = 8
-        cell.cellView.layer.masksToBounds = true
+        cell.cellView.layer.cornerRadius = 30
+        
+//        cell.cellView.layer.masksToBounds = true
+//        cell.cellView.clipsToBounds = true
     }
     
     func reloadTableView() {

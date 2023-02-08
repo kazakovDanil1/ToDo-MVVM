@@ -8,10 +8,6 @@
 import Foundation
 import UIKit.UIViewController
 
-enum DefaultsKeys {
-    static let savedTasks = "savedTasks"
-}
-
 class TasksViewModel {
     
     let taskAlert = TaskAlert()
