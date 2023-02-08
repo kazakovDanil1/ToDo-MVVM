@@ -93,6 +93,8 @@ extension TasksTableViewController:
             return UITableViewCell()
         }
         
+        setupCustomizationFor(cell)
+        
         cell.taskLabel.text = tasksViewModel.tasks[
             indexPath.section
         ].description
@@ -103,14 +105,6 @@ extension TasksTableViewController:
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: TaskCell.identifier, for: indexPath) as? TaskCell else { return }
-        
-        setupCustomizationFor(cell)
-    }
-    
     
     func tableView(
         _ tableView: UITableView,
