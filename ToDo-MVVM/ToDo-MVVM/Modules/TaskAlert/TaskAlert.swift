@@ -99,7 +99,6 @@ final class TaskAlert {
         alertView.addSubview(taskField)
         alertView.addSubview(buttonAlert)
         
-        
         myTarget = taskField
         
         UIView.animate(withDuration: 0.2, animations: {
