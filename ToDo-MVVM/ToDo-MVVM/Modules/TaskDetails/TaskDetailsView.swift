@@ -72,7 +72,7 @@ extension TaskDetailsView {
                 equalTo: contentView.trailingAnchor, constant: -30
             ),
             taskView.heightAnchor.constraint(
-                equalToConstant: 200
+                equalToConstant: 100
             ),
             button.topAnchor.constraint(
                 equalTo: taskView.bottomAnchor, constant: 20
