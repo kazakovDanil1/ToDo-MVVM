@@ -11,7 +11,6 @@ class TasksTableViewController: UIViewController {
     
     private let tasksViewModel = TasksViewModel()
     private let tasksTableView = TasksTableView()
-    
     private let button = CircleButton(action: #selector(createNewTask))
     
     override func viewDidLoad() {
@@ -20,7 +19,6 @@ class TasksTableViewController: UIViewController {
         addSubviews()
         setNavigationController()
         setTableViewControllerDelegates()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -32,12 +30,19 @@ class TasksTableViewController: UIViewController {
         button.layer.cornerRadius = 40
     }
     
-    
     @objc func createNewTask() {
         DispatchQueue.main.async {
             self.tasksViewModel.callAlert(controller: self)
             self.tasksViewModel.saveTask()
         }
+    }
+    
+}
+
+extension TasksTableViewController: TaskDetailsViewModelDelegate {
+    func updateTask(task: Task) {
+        tasksViewModel.tasks.append(task)
+        self.tasksTableView.reloadData()
     }
 }
 
@@ -61,9 +66,12 @@ extension TasksTableViewController:
         
         detailsViewModel.grabTask?(task)
         
+        detailsViewController.viewModel.delegate = self
+        
         navigationController?.pushViewController(
             detailsViewController, animated: true
         )
+        
     }
     
     func tableView(

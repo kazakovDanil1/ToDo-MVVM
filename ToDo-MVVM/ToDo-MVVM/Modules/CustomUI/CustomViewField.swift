@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomViewField: UITextView {
+class CustomViewField: UITextView {
 
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -29,7 +29,6 @@ final class CustomViewField: UITextView {
         layer.cornerRadius = cornerRadius
         backgroundColor = .blue
         textColor = .white
-        
     }
     
     required init?(coder: NSCoder) {
