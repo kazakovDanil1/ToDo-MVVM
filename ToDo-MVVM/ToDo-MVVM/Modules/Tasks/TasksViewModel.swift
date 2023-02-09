@@ -76,6 +76,8 @@ class TasksViewModel {
                 dotRange.lowerBound..<timeString.endIndex
             )
         }
-        return timeString
+        let last4 = String(timeString.suffix(8))
+        
+        return last4
     }
 }

@@ -129,7 +129,6 @@ extension TasksTableViewController:
                 [indexPath.section],
                 with: .fade
             )
-            
             self.tasksTableView.reloadData()
             tableView.endUpdates()
         }

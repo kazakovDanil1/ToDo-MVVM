@@ -9,12 +9,6 @@ import UIKit
 
 
 class addImageView: UIView {
-
-//    let imageLabel = CustomLabel(
-//        size: 10,
-//        weight: .light,
-//        title: "ДОБАВИТЬ ФОТО"
-//    )
     
     let screenShotImage: UIImageView = {
         let image = UIImageView()
@@ -27,15 +21,6 @@ class addImageView: UIView {
         return image
     }()
     
-//    
-//    let plusImageForScreenShot: UIImageView = {
-//        let image = UIImageView()
-//        image.image = UIImage(systemName: "plus")
-//        image.tintColor = UIColor(named: "taskCellColor")
-//       
-//        return image
-//    }()
-//
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -44,9 +29,7 @@ class addImageView: UIView {
         self.isUserInteractionEnabled = true
         screenShotImage.frame = self.frame
         self.addSubview(screenShotImage)
-        
     }
-
     
     required init?(coder: NSCoder) {
         fatalError()
