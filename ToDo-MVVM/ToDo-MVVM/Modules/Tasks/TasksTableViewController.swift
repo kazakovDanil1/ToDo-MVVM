@@ -42,11 +42,12 @@ class TasksTableViewController: UIViewController {
 extension TasksTableViewController: TaskDetailsViewModelDelegate {
     func updateTask(task: Task) {
         let newTask = task
-
+        
         if let row = tasksViewModel.tasks.firstIndex(
             where: { $0.number == newTask.number }
         ) {
             self.tasksViewModel.tasks[row] = newTask
+            self.tasksViewModel.saveTask()
             self.tasksTableView.reloadData()
         }
     }
@@ -170,7 +171,9 @@ extension TasksTableViewController:
 }
 
 
-extension TasksTableViewController {
+extension TasksTableViewController:
+    UINavigationControllerDelegate,
+    UIImagePickerControllerDelegate {
     
     private func setupCustomizationFor(_ cell: TaskCell) {
         cell.backgroundColor = .clear
@@ -185,56 +188,56 @@ extension TasksTableViewController {
         cell.cellView.layer.cornerRadius = 20
         cell.cellView.layer.masksToBounds = true
     }
-    
-    private func setNavigationController() {
-        navigationItem.title = "Tasks"
-        navigationController?.setupNavBar()
+
+private func setNavigationController() {
+    navigationItem.title = "Tasks"
+    navigationController?.setupNavBar()
+}
+
+func reloadTableView() {
+    DispatchQueue.main.async { [weak self] in
+        self?.reloadTableView()
     }
+}
+
+override func touchesBegan(
+    _ touches: Set<UITouch>,
+    with event: UIEvent?
+) {
+    super.touchesBegan(touches, with: event)
     
-    func reloadTableView() {
-        DispatchQueue.main.async { [weak self] in
-            self?.reloadTableView()
-        }
-    }
-    
-    override func touchesBegan(
-        _ touches: Set<UITouch>,
-        with event: UIEvent?
-    ) {
-        super.touchesBegan(touches, with: event)
-        
-        self.tasksViewModel.taskAlert.dismissAlert()
-    }
-    
-    private func setTableViewFrame() {
-        tasksTableView.frame = view.bounds
-    }
-    
-    private func addSubviews() {
-        view.addSubview(tasksTableView)
-        tasksTableView.addSubview(button)
-    }
-    
-    private func setTableViewControllerDelegates() {
-        tasksTableView.delegate = self
-        tasksTableView.dataSource = self
-    }
-    
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            button.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor, constant: -20
-            ),
-            button.bottomAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20
-            ),
-            button.heightAnchor.constraint(
-                equalToConstant: 80
-            ),
-            button.widthAnchor.constraint(
-                equalToConstant: 80
-            )
-        ])
-    }
-    
+    self.tasksViewModel.taskAlert.dismissAlert()
+}
+
+private func setTableViewFrame() {
+    tasksTableView.frame = view.bounds
+}
+
+private func addSubviews() {
+    view.addSubview(tasksTableView)
+    tasksTableView.addSubview(button)
+}
+
+private func setTableViewControllerDelegates() {
+    tasksTableView.delegate = self
+    tasksTableView.dataSource = self
+}
+
+private func setConstraints() {
+    NSLayoutConstraint.activate([
+        button.trailingAnchor.constraint(
+            equalTo: view.trailingAnchor, constant: -20
+        ),
+        button.bottomAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20
+        ),
+        button.heightAnchor.constraint(
+            equalToConstant: 80
+        ),
+        button.widthAnchor.constraint(
+            equalToConstant: 80
+        )
+    ])
+}
+
 }

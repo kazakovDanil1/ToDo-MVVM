@@ -28,6 +28,7 @@
 		973875522992B74000037503 /* TaskDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973875512992B74000037503 /* TaskDetailsViewModel.swift */; };
 		9781639E298EA2AB0021A02F /* TaskAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9781639D298EA2AB0021A02F /* TaskAlert.swift */; };
 		978163A6298FF8300021A02F /* CustomViewField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978163A5298FF8300021A02F /* CustomViewField.swift */; };
+		978F2C6C2994FECA0035A83D /* AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978F2C6B2994FECA0035A83D /* AddImageView.swift */; };
 		97E4B6B6298D44590036C85F /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E4B6B5298D44590036C85F /* CircleButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		973875512992B74000037503 /* TaskDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewModel.swift; sourceTree = "<group>"; };
 		9781639D298EA2AB0021A02F /* TaskAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAlert.swift; sourceTree = "<group>"; };
 		978163A5298FF8300021A02F /* CustomViewField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewField.swift; sourceTree = "<group>"; };
+		978F2C6B2994FECA0035A83D /* AddImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageView.swift; sourceTree = "<group>"; };
 		97E4B6B5298D44590036C85F /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +174,7 @@
 				9728A4F12993F5950022F1E8 /* CustomLabel.swift */,
 				9728A4F32993F7220022F1E8 /* CustomView.swift */,
 				9728A4F52993FD4E0022F1E8 /* MainView.swift */,
+				978F2C6B2994FECA0035A83D /* AddImageView.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				9709F82B298A6DDE008A3AF9 /* TasksViewModel.swift in Sources */,
 				9728A4FD29941D330022F1E8 /* CustomButton.swift in Sources */,
 				9709F80C298A6BAC008A3AF9 /* AppDelegate.swift in Sources */,
+				978F2C6C2994FECA0035A83D /* AddImageView.swift in Sources */,
 				9728A4EF2993EC360022F1E8 /* NavigationController-Extension.swift in Sources */,
 				9738754D29928B8B00037503 /* TaskDetailsViewController.swift in Sources */,
 				978163A6298FF8300021A02F /* CustomViewField.swift in Sources */,

@@ -18,6 +18,7 @@ class customButton: UIButton {
         setTitleColor(UIColor(named: "taskCellColor"), for: .normal)
         backgroundColor = .white
         tintColor = .black
+        
         self.makeShadows(
             radius: 10,
             color: UIColor.white.cgColor,

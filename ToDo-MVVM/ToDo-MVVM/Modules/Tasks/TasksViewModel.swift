@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit.UIViewController
+import UIKit.UIImage
 
 class TasksViewModel {
     
@@ -28,14 +29,16 @@ class TasksViewModel {
     func addTask() {
         let vc = TasksTableViewController()
         let taskIdentifier = UUID()
+        let date = getCurrentDate()
         
         taskAlert.grabTask { [weak self] text in
             if !(text).isEmpty {
                 let task = Task(
                     description: "\(text)",
-                    deadLine: "01.01.01",
+                    deadLine: date,
                     completionStatus: false,
-                    number: "\(taskIdentifier)"
+                    number: "\(taskIdentifier)",
+                    photo: nil
                 )
                 self?.tasks.append(task)
                 self?.saveTask()
@@ -44,7 +47,7 @@ class TasksViewModel {
             }
             
         }
-    }
+    }    
     
     func callAlert(
         controller: UIViewController
@@ -63,8 +66,16 @@ class TasksViewModel {
     func numberOfRowsInSection() -> Int {
         return tasks.count
     }
-}
-
-        
     
-
+    func getCurrentDate() -> String {
+        let time = Date(timeIntervalSinceNow: 10800)
+        var timeString = String(describing: time)
+        
+        if let dotRange = timeString.range(of: " +") {
+            timeString.removeSubrange(
+                dotRange.lowerBound..<timeString.endIndex
+            )
+        }
+        return timeString
+    }
+}

@@ -8,6 +8,7 @@
 import UIKit
 
 final class TaskAlert {
+    
     struct Constants {
         static let backgroundAlpha: CGFloat = 0.4
     }

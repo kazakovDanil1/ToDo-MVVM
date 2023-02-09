@@ -13,8 +13,10 @@ class TaskDetailsView: UIView {
     
     let taskLabel = CustomLabel(size: 20, weight: .bold)
     let taskView = CustomViewField(cornerRadius: 20)
-    
     let button = customButton()
+    
+    var addImage = addImageView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,17 +25,18 @@ class TaskDetailsView: UIView {
         updateConstraintsIfNeeded()
     }
     
-    func addViews() {
-        contentView.addSubview(taskLabel)
-        contentView.addSubview(taskView)
-        contentView.addSubview(button)
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         commonInit()
         addViews()
+    }
+    
+    func addViews() {
+        contentView.addSubview(taskLabel)
+        contentView.addSubview(taskView)
+        contentView.addSubview(button)
+        contentView.addSubview(addImage)
     }
     
     required init?(coder: NSCoder) {
@@ -88,8 +91,13 @@ extension TaskDetailsView {
             ),
             button.trailingAnchor.constraint(
                 equalTo: taskView.trailingAnchor, constant: -20
+            ),
+            addImage.topAnchor.constraint(
+                equalTo: button.bottomAnchor, constant: 20
+            ),
+            addImage.centerXAnchor.constraint(
+                equalTo: taskView.centerXAnchor
             )
-            
         ])
     }
     

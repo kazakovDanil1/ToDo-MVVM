@@ -13,6 +13,7 @@ struct Task: Codable {
     let deadLine: String
     let completionStatus: Bool
     let number: String
+    let photo: Data?
     
     static func createTask() -> [Task] {
         let tasks = [
@@ -20,7 +21,9 @@ struct Task: Codable {
                 description: "do something",
                 deadLine: "01.01.01",
                 completionStatus: false,
-                number: "000"
+                number: "000",
+                photo: nil
+                
             )
         ]
         
