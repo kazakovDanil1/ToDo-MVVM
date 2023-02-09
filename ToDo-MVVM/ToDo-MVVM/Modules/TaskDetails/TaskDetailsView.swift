@@ -95,8 +95,8 @@ extension TaskDetailsView {
             addImage.topAnchor.constraint(
                 equalTo: button.bottomAnchor, constant: 20
             ),
-            addImage.centerXAnchor.constraint(
-                equalTo: taskView.centerXAnchor
+            addImage.screenShotImage.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
             )
         ])
     }
