@@ -28,7 +28,6 @@ class TaskDetailsViewModel {
     }
     
     func getTask(task: Task, newDescription: String, photo: UIImage?) {
-        
         DispatchQueue.main.async { [weak self] in
             let task = Task(
                 description: newDescription,
@@ -42,11 +41,14 @@ class TaskDetailsViewModel {
     }
     
     func encode(photo: UIImage?, taskNumber: String) -> Data? {
+        
         guard let data = photo?.pngData() else { return nil }
         
-        UserDefaults.standard.set(data, forKey: "\(taskNumber)")
-        
-        print("it's decoded \(data) for task \(taskNumber)")
+        DispatchQueue.main.async {
+            UserDefaults.standard.set(data, forKey: "\(taskNumber)")
+            
+            print("it's decoded \(data) for task \(taskNumber)")
+        }
         
         return data
     }

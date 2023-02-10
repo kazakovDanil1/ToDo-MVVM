@@ -29,10 +29,10 @@ class TaskDetailsViewController: UIViewController {
     }
     
     @objc func updateTask() {
-        guard let task = viewModel.task else {
-            return
-        }
         DispatchQueue.main.async { [weak self] in
+            guard let task = self?.viewModel.task else {
+                return
+            }
             self?.viewModel.getTask(
                 task: task,
                 newDescription: self?.contentView?.taskView.text ?? "nil",
