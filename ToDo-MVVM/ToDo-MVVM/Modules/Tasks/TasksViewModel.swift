@@ -27,34 +27,40 @@ class TasksViewModel {
     }
     
     func addTask() {
-        let vc = TasksTableViewController()
         let taskIdentifier = UUID()
         let date = getCurrentDate()
         
-        taskAlert.grabTask { [weak self] text in
-            if !(text).isEmpty {
-                let task = Task(
-                    description: "\(text)",
-                    deadLine: date,
-                    completionStatus: false,
-                    number: "\(taskIdentifier)",
-                    photo: nil
-                )
-                self?.tasks.append(task)
-                self?.saveTask()
-                self?.taskAlert.dismissAlert()
-                vc.reloadTableView()
+        
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.taskAlert.grabTask { [weak self] text in
+                let vc = TasksTableViewController()
+                if !(text).isEmpty {
+                    let task = Task(
+                        description: "\(text)",
+                        deadLine: date,
+                        completionStatus: false,
+                        number: "\(taskIdentifier)",
+                        photo: nil
+                    )
+                    self?.tasks.append(task)
+                    self?.saveTask()
+                    self?.taskAlert.dismissAlert()
+                    vc.reloadTableView()
+                }
+                
             }
-            
         }
     }    
     
     func callAlert(
         controller: UIViewController
     ) {
-        taskAlert.showAlert(
-            controller: controller
-        )
+        DispatchQueue.main.async { [weak self] in
+            self?.taskAlert.showAlert(
+                controller: controller
+            )
+        }
     }
     
     func saveTask() {
