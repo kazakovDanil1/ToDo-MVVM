@@ -63,17 +63,24 @@ extension TasksTableViewController:
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        
+        
+        
         let detailsViewController = TaskDetailsViewController()
         
-        let task = tasksViewModel.tasks[indexPath.section]
-        
-        let detailsViewModel = TaskDetailsViewModel { myTask in
-            detailsViewController.viewModel.task = myTask
+        DispatchQueue.main.async { [weak self] in
+            let task = self?.tasksViewModel.tasks[indexPath.section]
+            
+            let detailsViewModel = TaskDetailsViewModel { myTask in
+                detailsViewController.viewModel.task = myTask
+            }
+            
+            guard let task = task else { return }
+            
+            detailsViewModel.grabTask?(task)
+            
+            detailsViewController.viewModel.delegate = self
         }
-        
-        detailsViewModel.grabTask?(task)
-        
-        detailsViewController.viewModel.delegate = self
         
         navigationController?.pushViewController(
             detailsViewController, animated: true
@@ -95,13 +102,15 @@ extension TasksTableViewController:
         
         setupCustomizationFor(cell)
         
-        cell.taskLabel.text = tasksViewModel.tasks[
-            indexPath.section
-        ].description
-        
-        cell.deadLineLabel.text = tasksViewModel.tasks[
-            indexPath.section
-        ].deadLine
+        DispatchQueue.main.async { [weak self] in
+            cell.taskLabel.text = self?.tasksViewModel.tasks[
+                indexPath.section
+            ].description
+            
+            cell.deadLineLabel.text = self?.tasksViewModel.tasks[
+                indexPath.section
+            ].deadLine
+        }
         
         return cell
     }

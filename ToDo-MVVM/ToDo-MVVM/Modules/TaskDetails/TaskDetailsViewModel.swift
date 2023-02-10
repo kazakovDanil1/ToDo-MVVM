@@ -28,14 +28,17 @@ class TaskDetailsViewModel {
     }
     
     func getTask(task: Task, newDescription: String, photo: UIImage?) {
-        let task = Task(
-            description: newDescription,
-            deadLine: task.deadLine,
-            completionStatus: task.completionStatus,
-            number: task.number,
-            photo: encode(photo: photo, taskNumber: "\(task.number)")
-        )
-        delegate?.updateTask(task: task)
+        
+        DispatchQueue.main.async { [weak self] in
+            let task = Task(
+                description: newDescription,
+                deadLine: task.deadLine,
+                completionStatus: task.completionStatus,
+                number: task.number,
+                photo: self?.encode(photo: photo, taskNumber: "\(task.number)")
+            )
+            self?.delegate?.updateTask(task: task)
+        }
     }
     
     func encode(photo: UIImage?, taskNumber: String) -> Data? {

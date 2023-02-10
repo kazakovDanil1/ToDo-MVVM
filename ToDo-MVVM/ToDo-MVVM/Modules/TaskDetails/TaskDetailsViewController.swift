@@ -32,11 +32,13 @@ class TaskDetailsViewController: UIViewController {
         guard let task = viewModel.task else {
             return
         }
-        self.viewModel.getTask(
-            task: task,
-            newDescription: contentView?.taskView.text ?? "nil",
-            photo: contentView?.addImage.screenShotImage.image
-        )
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel.getTask(
+                task: task,
+                newDescription: self?.contentView?.taskView.text ?? "nil",
+                photo: self?.contentView?.addImage.screenShotImage.image
+            )
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -48,12 +50,13 @@ class TaskDetailsViewController: UIViewController {
     }
     
     func fillContentView() {
-        contentView?.taskLabel.text = viewModel.task?.deadLine
-        contentView?.taskView.text = viewModel.task?.description
-        
-        
-        if let photoData = viewModel.task?.photo {
-            contentView?.addImage.screenShotImage.image = UIImage(data: photoData)
+        DispatchQueue.main.async { [weak self] in
+            self?.contentView?.taskLabel.text = self?.viewModel.task?.deadLine
+            self?.contentView?.taskView.text = self?.viewModel.task?.description
+            
+            if let photoData = self?.viewModel.task?.photo {
+                self?.contentView?.addImage.screenShotImage.image = UIImage(data: photoData)
+            }
         }
     }
 }
@@ -74,8 +77,9 @@ extension TaskDetailsViewController:
             ] as? UIImage else {
                 return
             }
-            
-            self.contentView?.addImage.screenShotImage.image = image
+            DispatchQueue.main.async { [weak self] in
+                self?.contentView?.addImage.screenShotImage.image = image
+            }
             dismiss(animated: true)
     }
     
