@@ -16,7 +16,7 @@ class TasksTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tasksViewModel.getTasks()
+        tasksViewModel.getAllTasks()
         addSubviews()
         setNavigationController()
         setTableViewControllerDelegates()
@@ -33,7 +33,7 @@ class TasksTableViewController: UIViewController {
     @objc func createNewTask() {
         DispatchQueue.main.async {
             self.tasksViewModel.callAlert(controller: self)
-            self.tasksViewModel.addTask()
+            self.tasksViewModel.createTask()
         }
     }
     
@@ -47,7 +47,10 @@ extension TasksTableViewController: TaskDetailsViewModelDelegate {
             where: { $0.number == newTask.number }
         ) {
             self.tasksViewModel.tasks[row] = newTask
-            self.tasksViewModel.saveTask()
+            self.tasksViewModel.storageManager.delete()
+            self.tasksViewModel.storageManager.updateOrCreateDataContainer(
+                byNew: tasksViewModel.tasks
+            )
             self.tasksTableView.reloadData()
         }
     }
@@ -63,12 +66,10 @@ extension TasksTableViewController:
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        
-        
-        
         let detailsViewController = TaskDetailsViewController()
         
         DispatchQueue.main.async { [weak self] in
+            
             let task = self?.tasksViewModel.tasks[indexPath.section]
             
             let detailsViewModel = TaskDetailsViewModel { myTask in
@@ -102,15 +103,13 @@ extension TasksTableViewController:
         
         setupCustomizationFor(cell)
         
-        DispatchQueue.main.async { [weak self] in
-            cell.taskLabel.text = self?.tasksViewModel.tasks[
+            cell.taskLabel.text = tasksViewModel.tasks[
                 indexPath.section
             ].description
             
-            cell.deadLineLabel.text = self?.tasksViewModel.tasks[
+            cell.deadLineLabel.text = tasksViewModel.tasks[
                 indexPath.section
             ].deadLine
-        }
         
         return cell
     }
@@ -132,13 +131,15 @@ extension TasksTableViewController:
             tableView.beginUpdates()
             
             tasksViewModel.tasks.remove(at: indexPath.section)
-            tasksViewModel.saveTask()
+            tasksViewModel.storageManager.delete()
+            tasksViewModel.storageManager.updateOrCreateDataContainer(byNew: tasksViewModel.tasks)
             
             tableView.deleteSections(
                 [indexPath.section],
                 with: .fade
             )
-            self.tasksTableView.reloadData()
+            
+            self.reloadTable()
             tableView.endUpdates()
         }
     }
@@ -202,9 +203,9 @@ private func setNavigationController() {
     navigationController?.setupNavBar()
 }
 
-func reloadTableView() {
+func reloadTable() {
     DispatchQueue.main.async { [weak self] in
-        self?.reloadTableView()
+        self?.tasksTableView.reloadData()
     }
 }
 

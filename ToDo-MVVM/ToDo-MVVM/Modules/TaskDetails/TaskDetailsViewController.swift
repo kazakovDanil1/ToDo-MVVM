@@ -33,7 +33,7 @@ class TaskDetailsViewController: UIViewController {
             guard let task = self?.viewModel.task else {
                 return
             }
-            self?.viewModel.getTask(
+            self?.viewModel.changeTask(
                 task: task,
                 newDescription: self?.contentView?.taskView.text ?? "nil",
                 photo: self?.contentView?.addImage.screenShotImage.image

@@ -27,28 +27,21 @@ class TaskDetailsViewModel {
         self.grabTask = grabTask
     }
     
-    func getTask(task: Task, newDescription: String, photo: UIImage?) {
+    func changeTask(task: Task, newDescription: String, photo: UIImage?) {
         DispatchQueue.main.async { [weak self] in
             let task = Task(
                 description: newDescription,
                 deadLine: task.deadLine,
                 completionStatus: task.completionStatus,
                 number: task.number,
-                photo: self?.encode(photo: photo, taskNumber: "\(task.number)")
+                photo: self?.encode(photo: photo)
             )
             self?.delegate?.updateTask(task: task)
         }
     }
     
-    func encode(photo: UIImage?, taskNumber: String) -> Data? {
-        
+    func encode(photo: UIImage?) -> Data? {
         guard let data = photo?.pngData() else { return nil }
-        
-        DispatchQueue.main.async {
-            UserDefaults.standard.set(data, forKey: "\(taskNumber)")
-            
-            print("it's decoded \(data) for task \(taskNumber)")
-        }
         
         return data
     }
