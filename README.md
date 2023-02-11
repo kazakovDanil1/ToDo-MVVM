@@ -15,7 +15,7 @@
 
 1. Создание заметки
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/122871161/218256839-b5b51991-c329-40c8-a6fd-3ad1090bee08.gif" width="300" height="600"/>
+  <img src="https://user-images.githubusercontent.com/122871161/218256839-b5b51991-c329-40c8-a6fd-3ad1090bee08.gif" width="200" height="400"/>
 </div>
 2. Редактирование заметки
 <div align="center">
