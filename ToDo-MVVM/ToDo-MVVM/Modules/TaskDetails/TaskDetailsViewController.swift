@@ -21,6 +21,7 @@ class TaskDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         addTargetToButtons()
+        setNavigationController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +52,6 @@ class TaskDetailsViewController: UIViewController {
     
     func fillContentView() {
         DispatchQueue.main.async { [weak self] in
-            self?.contentView?.taskLabel.text = self?.viewModel.task?.deadLine
             self?.contentView?.taskView.text = self?.viewModel.task?.description
             
             if let photoData = self?.viewModel.task?.photo {
@@ -64,6 +64,10 @@ class TaskDetailsViewController: UIViewController {
 extension TaskDetailsViewController:
     UINavigationControllerDelegate,
     UIImagePickerControllerDelegate {
+    
+    private func setNavigationController() {
+        navigationController?.setupNavBar()
+    }
     
     func imagePickerController(
         _ picker: UIImagePickerController,
@@ -84,17 +88,22 @@ extension TaskDetailsViewController:
     }
     
     func addTargetToButtons() {
-        contentView?.button.addTarget(
+        guard let contentView = contentView else { return }
+        contentView.button.addTarget(
             nil,
             action: #selector(updateTask),
             for: .touchUpInside
         )
         
+        
         let tapRecognizer = UITapGestureRecognizer(
             target: self, action: #selector(addImage)
         )
         
-        contentView?.addGestureRecognizer(tapRecognizer)
+        contentView.addGestureRecognizer(
+            tapRecognizer
+        )
+        
     }
 }
 

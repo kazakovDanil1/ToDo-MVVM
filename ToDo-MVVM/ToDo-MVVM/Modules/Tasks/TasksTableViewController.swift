@@ -70,10 +70,12 @@ extension TasksTableViewController:
         
         DispatchQueue.main.async { [weak self] in
             
-            let task = self?.tasksViewModel.tasks[indexPath.section]
+            let task = self?.tasksViewModel.tasks[
+                indexPath.section
+            ]
             
-            let detailsViewModel = TaskDetailsViewModel { myTask in
-                detailsViewController.viewModel.task = myTask
+            let detailsViewModel = TaskDetailsViewModel {
+                detailsViewController.viewModel.task = $0
             }
             
             guard let task = task else { return }
@@ -81,7 +83,12 @@ extension TasksTableViewController:
             detailsViewModel.grabTask?(task)
             
             detailsViewController.viewModel.delegate = self
+            
         }
+        
+        detailsViewController.navigationItem.title = tasksViewModel.tasks[
+            indexPath.section
+        ].deadLine
         
         navigationController?.pushViewController(
             detailsViewController, animated: true

@@ -15,12 +15,12 @@ class TaskDetailsView: UIView {
     let taskView = CustomViewField(cornerRadius: 20)
     let button = customButton()
     
-    var addImage = addImageView()
+    var addImage = AddImageView()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        addImage.isUserInteractionEnabled = true
         layoutSubviews()
         updateConstraintsIfNeeded()
     }
@@ -98,6 +98,7 @@ extension TaskDetailsView {
             addImage.screenShotImage.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
             )
+            
         ])
     }
     
