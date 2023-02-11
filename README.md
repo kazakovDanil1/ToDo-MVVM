@@ -1,4 +1,4 @@
-<h1 align="center">Трекер Задач,  <a href="https://github.com/kazakovDanil1/ToDo-MVVM/tree/main/ToDo-MVVM" target="_blank">ToDo</a> 
+<h1 align="center">Трекер Задач -  <a href="https://github.com/kazakovDanil1/ToDo-MVVM/tree/main/ToDo-MVVM" target="_blank">ToDo</a> 
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">
 </div>
@@ -15,7 +15,7 @@
 
 1. Создание заметки
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/122871161/218256608-1a0182d8-b75d-4c34-8fc2-a9ce7a4d96e4.mov" width="600" height="300"/>
+  <img src="https://user-images.githubusercontent.com/122871161/218256839-b5b51991-c329-40c8-a6fd-3ad1090bee08.gif" width="600" height="300"/>
 </div>
 2. Редактирование заметки
 <div align="center">
@@ -26,6 +26,7 @@
   <img src="https://media.giphy.com/media/dWesBcTLavkZuG35MI/giphy.gif" width="600" height="300"/>
 </div>
 
-## Images
+## Images!
+
 
 ![This is a alt text.](/image/sample.png "This is a sample image.")
