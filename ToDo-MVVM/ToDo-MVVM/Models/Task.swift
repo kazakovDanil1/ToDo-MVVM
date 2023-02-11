@@ -19,7 +19,7 @@ struct Task: Codable {
         let tasks = [
             Task(
                 description: "do something",
-                deadLine: "01.01.01",
+                deadLine: "14:55",
                 completionStatus: false,
                 number: "000",
                 photo: nil
