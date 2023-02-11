@@ -19,11 +19,9 @@
 </div>
 2. Редактирование заметки
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/122871161/218257146-2234a0ee-26d8-4660-b532-5ad0818fb698.gif" width="200" height="400"/>
+  <img src="https://user-images.githubusercontent.com/122871161/218257224-cccb2b05-ffe9-4eb9-a1bf-c97fc19b70e0.gif" width="200" height="400"/>
 </div>
 3. Возможность прикрепить фотографию
 <div align="center">
   <img src="https://user-images.githubusercontent.com/122871161/218257004-7463bdd7-903b-496f-ad1b-124e7495031b.gif" width="200" height="400"/>
 </div>
-
-![This is a alt text.](/image/sample.png "This is a sample image.")
