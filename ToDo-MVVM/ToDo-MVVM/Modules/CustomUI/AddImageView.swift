@@ -8,15 +8,16 @@
 import UIKit
 
 
-class addImageView: UIView {
+class AddImageView: UIView {
     
-    let screenShotImage: UIImageView = {
+    var screenShotImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = UIColor(named: "taskCellColor")?.withAlphaComponent(0.1)
         image.tintColor = UIColor(named: "taskCellColor")
         image.layer.masksToBounds = true
         image.layer.cornerRadius = 20
         image.contentMode = .scaleAspectFit
+        image.isUserInteractionEnabled = true
         
         return image
     }()
@@ -26,10 +27,12 @@ class addImageView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         self.frame.size = CGSize(width: 100, height: 100)
         self.backgroundColor = .blue
-        self.isUserInteractionEnabled = true
-        screenShotImage.frame = self.frame
         self.addSubview(screenShotImage)
+        screenShotImage.frame = self.frame
+        
+        self.isUserInteractionEnabled = true 
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError()

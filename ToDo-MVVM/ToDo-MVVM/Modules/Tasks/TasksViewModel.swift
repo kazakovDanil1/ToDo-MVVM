@@ -11,30 +11,41 @@ import UIKit.UIImage
 
 class TasksViewModel {
     
+    let storageManager = StorageManager.shared
+    
     let taskAlert = TaskAlert()
     
     var tasks: [Task] = Task.createTask()
     
-    func getTasks() {
-        if let myData = UserDefaults.standard.value(
-            forKey: DefaultsKeys.savedTasks
-        ) as? Data {
-            guard let savedTasks = try? PropertyListDecoder().decode(
-                [Task].self, from: myData
-            ) else { return }
-            self.tasks = savedTasks
+    func getAllTasks() -> [Task] {
+        guard let context = storageManager.appDelegateContainer else {
+            return tasks
         }
+        do {
+            let coreDataContainer = try context.fetch(
+                TaskModel.fetchRequest()
+            )
+            coreDataContainer.forEach { container in
+                if let taskData = container.task {
+                    tasks = storageManager.decode(taskAsData: taskData)
+                }
+            }
+        } catch {
+            print("Error - \(error.localizedDescription)")
+        }
+        
+        storageManager.updateOrCreateDataContainer(byNew: tasks)
+        return tasks
     }
     
-    func addTask() {
+    func createTask() {
         let taskIdentifier = UUID()
         let date = getCurrentDate()
-        
-        
+        let vc = TasksTableViewController()
         
         DispatchQueue.main.async { [weak self] in
             self?.taskAlert.grabTask { [weak self] text in
-                let vc = TasksTableViewController()
+                guard let self = self else { return }
                 if !(text).isEmpty {
                     let task = Task(
                         description: "\(text)",
@@ -43,15 +54,14 @@ class TasksViewModel {
                         number: "\(taskIdentifier)",
                         photo: nil
                     )
-                    self?.tasks.append(task)
-                    self?.saveTask()
-                    self?.taskAlert.dismissAlert()
-                    vc.reloadTableView()
+                    self.tasks.append(task)
+                    self.storageManager.updateOrCreateDataContainer(byNew: self.tasks)
+                    vc.reloadTable()
+                    self.taskAlert.dismissAlert()
                 }
-                
             }
         }
-    }    
+    }
     
     func callAlert(
         controller: UIViewController
@@ -60,12 +70,6 @@ class TasksViewModel {
             self?.taskAlert.showAlert(
                 controller: controller
             )
-        }
-    }
-    
-    func saveTask() {
-        if let data = try? PropertyListEncoder().encode(tasks) {
-            UserDefaults.standard.set(data, forKey: DefaultsKeys.savedTasks)
         }
     }
     
