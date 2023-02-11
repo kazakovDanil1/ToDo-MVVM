@@ -1,5 +1,5 @@
 <h1 align="center">Трекер Задач -  <a href="https://github.com/kazakovDanil1/ToDo-MVVM/tree/main/ToDo-MVVM" target="_blank">ToDo</a> 
-<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
+<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32" width="32"/></h1>
 <h3 align="center">
 </div>
 
