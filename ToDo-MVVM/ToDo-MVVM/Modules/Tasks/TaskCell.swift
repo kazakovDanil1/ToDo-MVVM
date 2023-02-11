@@ -11,13 +11,13 @@ class TaskCell: UITableViewCell {
     
     static let identifier = "TaskCell"
     
-    lazy var taskLabel = CustomLabel(
+    let taskLabel = CustomLabel(
         size: 20, weight: .semibold
     )
-    lazy var deadLineLabel = CustomLabel(
+    let deadLineLabel = CustomLabel(
         size: 20, weight: .semibold
     )
-    lazy var cellView = CustomView()
+    let cellView = CustomView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

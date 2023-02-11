@@ -17,9 +17,9 @@ class TasksViewModel {
     
     var tasks: [Task] = Task.createTask()
     
-    func getAllTasks() -> [Task] {
+    func getAllTasks(){
         guard let context = storageManager.appDelegateContainer else {
-            return tasks
+            return 
         }
         do {
             let coreDataContainer = try context.fetch(
@@ -35,7 +35,7 @@ class TasksViewModel {
         }
         
         storageManager.updateOrCreateDataContainer(byNew: tasks)
-        return tasks
+
     }
     
     func createTask() {
@@ -87,7 +87,8 @@ class TasksViewModel {
             )
         }
         let last4 = String(timeString.suffix(8))
+        let last3 = String(last4.prefix(5))
         
-        return last4
+        return last3
     }
 }

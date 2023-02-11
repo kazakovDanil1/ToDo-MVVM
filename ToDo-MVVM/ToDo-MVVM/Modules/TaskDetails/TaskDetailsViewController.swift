@@ -95,7 +95,6 @@ extension TaskDetailsViewController:
             for: .touchUpInside
         )
         
-        
         let tapRecognizer = UITapGestureRecognizer(
             target: self, action: #selector(addImage)
         )

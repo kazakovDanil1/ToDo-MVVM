@@ -17,7 +17,6 @@ class TaskDetailsView: UIView {
     
     var addImage = AddImageView()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addImage.isUserInteractionEnabled = true
@@ -98,7 +97,6 @@ extension TaskDetailsView {
             addImage.screenShotImage.centerXAnchor.constraint(
                 equalTo: contentView.centerXAnchor
             )
-            
         ])
     }
     

@@ -110,13 +110,13 @@ extension TasksTableViewController:
         
         setupCustomizationFor(cell)
         
-            cell.taskLabel.text = tasksViewModel.tasks[
-                indexPath.section
-            ].description
-            
-            cell.deadLineLabel.text = tasksViewModel.tasks[
-                indexPath.section
-            ].deadLine
+        cell.taskLabel.text = tasksViewModel.tasks[
+            indexPath.section
+        ].description
+        
+        cell.deadLineLabel.text = tasksViewModel.tasks[
+            indexPath.section
+        ].deadLine
         
         return cell
     }
@@ -204,56 +204,56 @@ extension TasksTableViewController:
         cell.cellView.layer.cornerRadius = 20
         cell.cellView.layer.masksToBounds = true
     }
-
-private func setNavigationController() {
-    navigationItem.title = "Tasks"
-    navigationController?.setupNavBar()
-}
-
-func reloadTable() {
-    DispatchQueue.main.async { [weak self] in
-        self?.tasksTableView.reloadData()
-    }
-}
-
-override func touchesBegan(
-    _ touches: Set<UITouch>,
-    with event: UIEvent?
-) {
-    super.touchesBegan(touches, with: event)
     
-    self.tasksViewModel.taskAlert.dismissAlert()
-}
-
-private func setTableViewFrame() {
-    tasksTableView.frame = view.bounds
-}
-
-private func addSubviews() {
-    view.addSubview(tasksTableView)
-    tasksTableView.addSubview(button)
-}
-
-private func setTableViewControllerDelegates() {
-    tasksTableView.delegate = self
-    tasksTableView.dataSource = self
-}
-
-private func setConstraints() {
-    NSLayoutConstraint.activate([
-        button.trailingAnchor.constraint(
-            equalTo: view.trailingAnchor, constant: -20
-        ),
-        button.bottomAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20
-        ),
-        button.heightAnchor.constraint(
-            equalToConstant: 80
-        ),
-        button.widthAnchor.constraint(
-            equalToConstant: 80
-        )
-    ])
-}
-
+    private func setNavigationController() {
+        navigationItem.title = "Tasks"
+        navigationController?.setupNavBar()
+    }
+    
+    func reloadTable() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tasksTableView.reloadData()
+        }
+    }
+        
+    override func touchesBegan(
+        _ touches: Set<UITouch>,
+        with event: UIEvent?
+    ) {
+        super.touchesBegan(touches, with: event)
+        
+        self.tasksViewModel.taskAlert.dismissAlert()
+    }
+    
+    private func setTableViewFrame() {
+        tasksTableView.frame = view.bounds
+    }
+    
+    private func addSubviews() {
+        view.addSubview(tasksTableView)
+        tasksTableView.addSubview(button)
+    }
+    
+    private func setTableViewControllerDelegates() {
+        tasksTableView.delegate = self
+        tasksTableView.dataSource = self
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            button.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor, constant: -20
+            ),
+            button.bottomAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20
+            ),
+            button.heightAnchor.constraint(
+                equalToConstant: 80
+            ),
+            button.widthAnchor.constraint(
+                equalToConstant: 80
+            )
+        ])
+    }
+    
 }
